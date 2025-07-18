@@ -104,7 +104,7 @@ class CitationStyleLanguageHandler extends Handler {
 		$this->citationStyle = $args[0];
 		$this->returnJson = isset($userVars['return']) && $userVars['return'] === 'json';
 		$this->submission = Services::get('submission')->get((int) $userVars['submissionId']);
-		$this->issue = $userVars['issueId'] ? Services::get('issue')->get((int) $userVars['issueId']) : null;
+		$this->issue = !empty($userVars['issueId']) ? Services::get('issue')->get((int) $userVars['issueId']) : null;
 		
 		if (!$this->submission) {
 			$request->getDispatcher()->handle404();
